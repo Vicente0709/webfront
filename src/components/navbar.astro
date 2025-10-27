@@ -296,4 +296,22 @@ const cssVars = `
     flex-shrink: 0;
   }
 </style>
-<script src="/src/scripts/navbar.js" defer></script>
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const trigger = document.getElementById("products-trigger");
+    const panel = document.getElementById("products-panel");
+    if (!trigger || !panel) return;
+
+    trigger.addEventListener("click", () => {
+      trigger.classList.toggle("active");
+      panel.classList.toggle("hidden");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!panel.contains(e.target) && !trigger.contains(e.target)) {
+        trigger.classList.remove("active");
+        panel.classList.add("hidden");
+      }
+    });
+  });
+</script>

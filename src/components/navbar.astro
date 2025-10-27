@@ -1,4 +1,5 @@
 ---
+import productsPanel from "../components/productsPanel.astro";
 // Props configurables
 const {
   logoSrc = "/images/zelify_logo2.png",
@@ -36,7 +37,8 @@ const cssVars = `
 
   <ul class="nav-links">
     <li class="dropdown-container">
-      <button
+      <!-- <button
+        id="products-trigger"
         class="dropdown-trigger"
         type="button"
         aria-haspopup="true"
@@ -62,7 +64,8 @@ const cssVars = `
         <li>
           <a href="/discountsCoupons" role="menuitem">Discounts & Coupons</a>
         </li>
-      </ul>
+      </ul> -->
+      <button id="products-trigger" class="dropdown-trigger" type="button">Products</button>
     </li>
     <li><a href="/">Resources</a></li>
     <li><a href="/">Developers</a></li>
@@ -111,7 +114,6 @@ const cssVars = `
     </a>
   </div>
 </nav>
-
 <style>
   @font-face {
     font-family: "NataSans";
@@ -119,7 +121,29 @@ const cssVars = `
     font-weight: 100 900;
     font-display: swap;
   }
+  /* Limita el ancho del navbar y céntralo */
+  nav {
+    max-width: 1200px; /* o lo que prefieras */
+    width: min(1200px, 92vw); /* respeta márgenes laterales */
+    margin: 0 auto; /* centra el nav en la página */
+    padding-inline: clamp(16px, 2vw, 32px); /* respiro lateral responsivo */
+  }
 
+  /* Opcional: en pantallas grandes puedes dar un pelín más de aire */
+  @media (min-width: 1440px) {
+    nav {
+      width: min(1280px, 90vw);
+    }
+  }
+
+  /* En móviles, que use casi todo el ancho */
+  @media (max-width: 640px) {
+    nav {
+      width: 100%;
+      max-width: none;
+      padding-inline: 16px;
+    }
+  }
   nav {
     display: flex;
     justify-content: space-between;
@@ -176,8 +200,14 @@ const cssVars = `
   }
 
   /* DROPDOWN */
-  .dropdown-container { position: relative; }
-  .dropdown-trigger { padding: 0.5rem; margin: 0; cursor: default; }
+  .dropdown-container {
+    position: relative;
+  }
+  .dropdown-trigger {
+    padding: 0.5rem;
+    margin: 0;
+    cursor: default;
+  }
 
   .dropdown-menu {
     position: absolute;
@@ -190,7 +220,7 @@ const cssVars = `
     background-color: var(--dropdown-bg);
     border: 1px solid #e9ecef;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 10;
 
     visibility: hidden;
@@ -244,7 +274,9 @@ const cssVars = `
     color: var(--btn-light-text);
     border: 1px solid var(--btn-light-border);
   }
-  .btn-light:hover { background-color: var(--btn-light-hover-bg); }
+  .btn-light:hover {
+    background-color: var(--btn-light-hover-bg);
+  }
 
   .btn-outline {
     background-color: transparent;
@@ -263,3 +295,4 @@ const cssVars = `
     flex-shrink: 0;
   }
 </style>
+<script src="/src/scripts/navbar.js" defer></script>

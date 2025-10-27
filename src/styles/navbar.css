@@ -177,7 +177,6 @@
 
 #products-trigger {
   background: transparent;
-  color: #ffffff;
   border: none;
   border-radius: 10px;
   padding: 0.6rem 1.2rem;
@@ -200,13 +199,5 @@
   font-weight: 600;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
-.pp-content {
-  opacity: 1;
-  transition: opacity 0.18s ease;
-}
-.pp-content.fade-in {
-  opacity: 1;
-}
-.pp-content:not(.fade-in) {
-  opacity: 0.3;
-}
+.pp-content { opacity: 1; transition: opacity .18s; }
+.pp-content.is-fading { opacity: .45; }   /* solo cuando queramos atenuar */

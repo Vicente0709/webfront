@@ -1,17 +1,26 @@
 ---
 import "../styles/navbar.css";
 ---
+
 <div id="products-panel" class="products-panel hidden">
   <aside class="pp-sidebar" role="tablist" aria-label="Products">
-    <button role="tab" class="pp-item is-active" data-key="register">Register</button>
+    <button role="tab" class="pp-item is-active" data-key="register"
+      >Register</button
+    >
     <button role="tab" class="pp-item" data-key="identity">Identity</button>
     <button role="tab" class="pp-item" data-key="aml">AML</button>
     <button role="tab" class="pp-item" data-key="linking">Linking</button>
     <button role="tab" class="pp-item" data-key="cards">Cards</button>
     <button role="tab" class="pp-item" data-key="transfers">Transfers</button>
-    <button role="tab" class="pp-item" data-key="international">International Transfers</button>
-    <button role="tab" class="pp-item" data-key="biz">Business & Organizations</button>
-    <button role="tab" class="pp-item" data-key="matilda">Matilda AI Fintech Core</button>
+    <button role="tab" class="pp-item" data-key="international"
+      >International Transfers</button
+    >
+    <button role="tab" class="pp-item" data-key="biz"
+      >Business & Organizations</button
+    >
+    <button role="tab" class="pp-item" data-key="matilda"
+      >Matilda AI Fintech Core</button
+    >
   </aside>
 
   <section class="pp-content" aria-live="polite">
@@ -19,8 +28,8 @@ import "../styles/navbar.css";
       <h3 class="pp-title">Overview</h3>
       <p class="pp-sub">
         A product that enables initial registration through email and password,
-        ensuring access security, traceability, and device data capture to prevent
-        fraud and connect the user to a trusted environment.
+        ensuring access security, traceability, and device data capture to
+        prevent fraud and connect the user to a trusted environment.
       </p>
       <hr class="pp-rule" />
     </header>
@@ -29,11 +38,15 @@ import "../styles/navbar.css";
       <li class="pp-feature">
         <span class="pp-icon">
           <!-- icono placeholder -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4" stroke-width="2"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            ><path d="M9 11l3 3L22 4" stroke-width="2"></path></svg
+          >
         </span>
         <div>
           <h4 class="pp-ft-title">Authentication</h4>
-          <p class="pp-ft-desc">Allows register, authenticate, and authorize users.</p>
+          <p class="pp-ft-desc">
+            Allows register, authenticate, and authorize users.
+          </p>
         </div>
       </li>
       <li class="pp-feature">
@@ -42,16 +55,23 @@ import "../styles/navbar.css";
         </span>
         <div>
           <h4 class="pp-ft-title">Geolocation</h4>
-          <p class="pp-ft-desc">Locate, map, or analyze locations with precision.</p>
+          <p class="pp-ft-desc">
+            Locate, map, or analyze locations with precision.
+          </p>
         </div>
       </li>
       <li class="pp-feature">
         <span class="pp-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="14" rx="2" stroke-width="2"/><path d="M7 8h10" stroke-width="2"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            ><rect x="3" y="4" width="18" height="14" rx="2" stroke-width="2"
+            ></rect><path d="M7 8h10" stroke-width="2"></path></svg
+          >
         </span>
         <div>
           <h4 class="pp-ft-title">Device information</h4>
-          <p class="pp-ft-desc">Collects device information for security and analytics.</p>
+          <p class="pp-ft-desc">
+            Collects device information for security and analytics.
+          </p>
         </div>
       </li>
     </ul>
@@ -63,8 +83,20 @@ import "../styles/navbar.css";
   const panel = document.getElementById("products-panel");
   const sidebar = panel.querySelector(".pp-sidebar");
   const titleEl = panel.querySelector(".pp-title");
-  const subEl   = panel.querySelector(".pp-sub");
-  const listEl  = panel.querySelector("#pp-features");
+  const subEl = panel.querySelector(".pp-sub");
+  const listEl = panel.querySelector("#pp-features");
+  // 1) Ruta destino por sección (ajusta si cambian tus paths)
+  const KEY_TO_ROUTE = {
+    register: "/auth",
+    identity: "/identity",
+    aml: "/amlCompliance",
+    linking: "/openBankingConnect",
+    cards: "/cardIssuing",
+    transfers: "/moneyTransfers",
+    international: "/transactions", // cámbialo cuando tengas /internationalTransfers
+    biz: "/discountsCoupons", // o la página que decidas para “Business & Organizations”
+    matilda: "/matildaAI",
+  };
 
   // Pequeño catálogo de contenidos por pestaña
   const DATA = {
@@ -72,81 +104,190 @@ import "../styles/navbar.css";
       title: "Overview",
       sub: "A product that enables initial registration through email and password, ensuring access security, traceability, and device data capture to prevent fraud and connect the user to a trusted environment.",
       features: [
-        { icon: "check",   t: "Authentication",      d: "Allows register, authenticate, and authorize users." },
-        { icon: "globe",   t: "Geolocation",         d: "Locate, map, or analyze locations with precision." },
-        { icon: "device",  t: "Device information",  d: "Collects device information for security and analytics." },
+        {
+          icon: "check",
+          t: "Authentication",
+          d: "Allows register, authenticate, and authorize users.",
+        },
+        {
+          icon: "globe",
+          t: "Geolocation",
+          d: "Locate, map, or analyze locations with precision.",
+        },
+        {
+          icon: "device",
+          t: "Device information",
+          d: "Collects device information for security and analytics.",
+        },
       ],
     },
     identity: {
       title: "Identity",
       sub: "Identity proofing, liveness and document checks to reduce fraud and friction.",
       features: [
-        { icon: "id",      t: "KYC",                 d: "Verify identity using documents and authoritative data." },
-        { icon: "face",    t: "Liveness",            d: "Biometric checks ensure the person is present and real." },
-        { icon: "shield",  t: "Watchlists",          d: "Screen against sanctions, PEP and adverse media." },
+        {
+          icon: "id",
+          t: "Identity",
+          d: "Verify identity using documents and authoritative data.",
+        },
+        {
+          icon: "face",
+          t: "Liveness",
+          d: "Biometric checks ensure the person is present and real.",
+        },
+        {
+          icon: "shield",
+          t: "Watchlists",
+          d: "Screen against sanctions, PEP and adverse media.",
+        },
       ],
     },
     aml: {
       title: "AML Compliance",
       sub: "Real-time monitoring, risk scoring and workflows that help you meet regulations.",
       features: [
-        { icon: "rules",   t: "Rules Engine",        d: "Configurable policies with alerts and audit trails." },
-        { icon: "score",   t: "Risk Scoring",        d: "Spot suspicious behaviour across transactions." },
-        { icon: "case",    t: "Case Management",     d: "Investigate, escalate and resolve alerts efficiently." },
+        {
+          icon: "rules",
+          t: "AML",
+          d: "Configurable policies with alerts and audit trails.",
+        },
+        {
+          icon: "score",
+          t: "Risk Scoring",
+          d: "Spot suspicious behaviour across transactions.",
+        },
+        {
+          icon: "case",
+          t: "Case Management",
+          d: "Investigate, escalate and resolve alerts efficiently.",
+        },
       ],
     },
     linking: {
       title: "Open Banking / Linking",
       sub: "Connect user accounts securely to enable data access and payments initiation.",
       features: [
-        { icon: "link",    t: "Connections",         d: "Bank-grade linking flows with consent management." },
-        { icon: "sync",    t: "Data Sync",           d: "Balances, transactions and holdings, normalized." },
-        { icon: "key",     t: "Tokens",              d: "Short-lived tokens and rotation for secure access." },
+        {
+          icon: "link",
+          t: "Connections",
+          d: "Bank-grade linking flows with consent management.",
+        },
+        {
+          icon: "sync",
+          t: "Data Sync",
+          d: "Balances, transactions and holdings, normalized.",
+        },
+        {
+          icon: "key",
+          t: "Tokens",
+          d: "Short-lived tokens and rotation for secure access.",
+        },
       ],
     },
     cards: {
       title: "Card Issuing",
       sub: "Issue, manage and control virtual and physical cards with granular rules.",
       features: [
-        { icon: "card",    t: "Issuing",             d: "Instantly create cards and set spend limits." },
-        { icon: "lock",    t: "Controls",            d: "MCC, location and velocity controls per card." },
-        { icon: "gear",    t: "Lifecycle",           d: "Activate, pause, replace and reissue seamlessly." },
+        {
+          icon: "card",
+          t: "Card",
+          d: "Instantly create cards and set spend limits.",
+        },
+        {
+          icon: "lock",
+          t: "Controls",
+          d: "MCC, location and velocity controls per card.",
+        },
+        {
+          icon: "gear",
+          t: "Lifecycle",
+          d: "Activate, pause, replace and reissue seamlessly.",
+        },
       ],
     },
     transfers: {
       title: "Money Transfers",
       sub: "Reliable pay-ins and pay-outs with tracking and reconciliation at scale.",
       features: [
-        { icon: "send",    t: "Pay-ins",             d: "Accept bank transfers and faster payments." },
-        { icon: "receive", t: "Pay-outs",            d: "Disburse funds programmatically, with webhooks." },
-        { icon: "report",  t: "Reconciliation",      d: "Match statements to ledgers automatically." },
+        {
+          icon: "send",
+          t: "Pay-ins",
+          d: "Accept bank transfers and faster payments.",
+        },
+        {
+          icon: "receive",
+          t: "Pay-outs",
+          d: "Disburse funds programmatically, with webhooks.",
+        },
+        {
+          icon: "report",
+          t: "Reconciliation",
+          d: "Match statements to ledgers automatically.",
+        },
       ],
     },
     international: {
       title: "International Transfers",
       sub: "Cross-border payments, FX and compliance in a single interface.",
       features: [
-        { icon: "globe",   t: "FX",                  d: "Competitive rates with transparent fees." },
-        { icon: "shield",  t: "Compliance",          d: "Sanctions screening and travel-rule data." },
-        { icon: "track",   t: "Tracking",            d: "Know where your payment is at any time." },
+        {
+          icon: "globe",
+          t: "TX",
+          d: "Competitive rates with transparent fees.",
+        },
+        {
+          icon: "shield",
+          t: "Compliance",
+          d: "Sanctions screening and travel-rule data.",
+        },
+        {
+          icon: "track",
+          t: "Tracking",
+          d: "Know where your payment is at any time.",
+        },
       ],
     },
     biz: {
       title: "Business & Organizations",
       sub: "Multi-entity accounts, roles and permissions for teams and partners.",
       features: [
-        { icon: "org",     t: "Workspaces",          d: "Separate finances by business unit or client." },
-        { icon: "users",   t: "Roles",               d: "Granular permissions with audit logging." },
-        { icon: "api",     t: "APIs & Webhooks",     d: "Automate workflows safely and predictably." },
+        {
+          icon: "Discounts & Coupons",
+          t: "Empowering Businesses Within the Zelify Ecosystem.",
+          d: "Separate finances by business unit or client.",
+        },
+        {
+          icon: "users",
+          t: "Roles",
+          d: "Granular permissions with audit logging.",
+        },
+        {
+          icon: "api",
+          t: "APIs & Webhooks",
+          d: "Automate workflows safely and predictably.",
+        },
       ],
     },
     matilda: {
       title: "Matilda AI Fintech Core",
       sub: "AI assistance for financial analysis, education and support across the suite.",
       features: [
-        { icon: "spark",   t: "Insights",            d: "Explain anomalies and surface opportunities." },
-        { icon: "chat",    t: "Assistant",           d: "Context-aware answers from your financial data." },
-        { icon: "bolt",    t: "Automation",          d: "Trigger actions and drafts from natural language." },
+        {
+          icon: "spark",
+          t: "Matilda AI Fintech Core",
+          d: "Explain anomalies and surface opportunities.",
+        },
+
+        {
+          icon: "chat",
+          t: "Assistant",
+          d: "Context-aware answers from your financial data.",
+        },
+        {
+          icon: "bolt",
+          t: "Automation",
+          d: "Trigger actions and drafts from natural language.",
+        },
       ],
     },
   };
@@ -214,18 +355,25 @@ import "../styles/navbar.css";
     titleEl.textContent = section.title;
     subEl.textContent = section.sub;
 
-    // pequeño fade
-    panel.querySelector(".pp-content")?.classList.remove("fade-in");
-    listEl.innerHTML = section.features.map(f => `
-      <li class="pp-feature">
-        <span class="pp-icon">${iconSVG(f.icon)}</span>
+    listEl.innerHTML = section.features
+      .map((f, idx) => {
+        const icon = iconSVG(f.icon);
+        const card = `
+        <span class="pp-icon">${icon}</span>
         <div>
           <h4 class="pp-ft-title">${f.t}</h4>
           <p class="pp-ft-desc">${f.d}</p>
         </div>
-      </li>
-    `).join("");
-    requestAnimationFrame(() => panel.querySelector(".pp-content")?.classList.add("fade-in"));
+      `;
+
+        // 👉 El PRIMER feature (idx === 0) se vuelve link a la página de la sección
+        if (idx === 0 && KEY_TO_ROUTE[key]) {
+          return `<a class="pp-feature" href="${KEY_TO_ROUTE[key]}">${card}</a>`;
+        }
+        // Los demás quedan como items normales
+        return `<li class="pp-feature">${card}</li>`;
+      })
+      .join("");
   }
 
   // Click en la barra izquierda
@@ -240,4 +388,3 @@ import "../styles/navbar.css";
   // Estado inicial
   render("register");
 </script>
-

@@ -1,5 +1,7 @@
 ---
 import Navbar from "../components/navbar.astro";
+import ProductsPanel from "../components/productsPanel.astro";
+import "../styles/navbar.css";
 ---
 
 <html lang="en">
@@ -43,7 +45,7 @@ import Navbar from "../components/navbar.astro";
         third: { label: "EN", href: "/" },
       }}
     />
-
+    <ProductsPanel />
     <section class="hero">
       <div class="content">
         <h2 class="section-label">Identity</h2>
@@ -78,7 +80,13 @@ import Navbar from "../components/navbar.astro";
   }
 
   body {
-    font-family: "NataSans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family:
+      "NataSans",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
     color: #e9eff7;
   }
 

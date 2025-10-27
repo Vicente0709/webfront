@@ -45,31 +45,67 @@ const cssVars = `
         Products
       </button>
       <ul class="dropdown-menu" role="menu">
-        <li><a href="/zelifyPage1" role="menuitem">Auth</a></li>
-        <li><a href="/zelifyPage2" role="menuitem">Identity</a></li>
-        <li><a href="/zelifyPage3" role="menuitem">AML</a></li>
-        <li><a href="/zelifyPage4" role="menuitem">Connect</a></li>
-        <li><a href="/zelifyPage5" role="menuitem">Cards</a></li>
-        <li><a href="/zelifyPage6" role="menuitem">Transfers</a></li>
-        <li><a href="/zelifyPage7" role="menuitem">TX</a></li>
-        <li><a href="/zelifyPage8" role="menuitem">Payments</a></li>
-        <li><a href="/zelifyPage9" role="menuitem">Matilda AI Fintech Core</a></li>
-        <li><a href="/zelifyPage10" role="menuitem">Insurance</a></li>
-        <li><a href="/zelifyPage11" role="menuitem">Discounts & Coupons</a></li>
+        <li><a href="/auth" role="menuitem">Auth</a></li>
+        <li><a href="/identity" role="menuitem">Identity</a></li>
+        <li><a href="/amlCompliance" role="menuitem">AML Compliance</a></li>
+        <li>
+          <a href="/openBankingConnect" role="menuitem">Open Banking Connect</a>
+        </li>
+        <li><a href="/cardIssuing" role="menuitem">Card Issuing</a></li>
+        <li><a href="/moneyTransfers" role="menuitem">Money Transfers</a></li>
+        <li><a href="/transactions" role="menuitem">Transactions</a></li>
+        <li><a href="/payments" role="menuitem">Payments</a></li>
+        <li>
+          <a href="/matildaAI" role="menuitem">Matilda AI Fintech Core</a>
+        </li>
+        <li><a href="/insurance" role="menuitem">Insurance</a></li>
+        <li>
+          <a href="/discountsCoupons" role="menuitem">Discounts & Coupons</a>
+        </li>
       </ul>
     </li>
     <li><a href="/">Resources</a></li>
     <li><a href="/">Developers</a></li>
     <li><a href="/" class="highlight">personal</a></li>
   </ul>
-
   <div class="action-links">
     <a href={buttons.first?.href ?? "/"} class="btn btn-light">
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <!-- cuerpo del maletín -->
+        <rect x="3" y="7" width="18" height="13" rx="3"></rect>
+        <!-- manija -->
+        <path d="M9 7V6a3 3 0 0 1 6 0v1"></path>
+        <!-- cerradura (punto central) -->
+        <circle cx="12" cy="13" r="1.7" fill="currentColor" stroke="none"
+        ></circle>
+      </svg>
       {buttons.first?.label ?? "Work with us"}
     </a>
+
     <a href={buttons.second?.href ?? "/"} class="btn btn-light">
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10 17L15 12L10 7V10H3V14H10V17ZM20 19H12V21H20C21.1 21 22 20.1 22 19V5C22 3.9 21.1 3 20 3H12V5H20V19Z"
+        ></path>
+      </svg>
       {buttons.second?.label ?? "Bank access"}
     </a>
+
     <a href={buttons.third?.href ?? "/"} class="btn btn-outline">
       {buttons.third?.label ?? "EN"}
     </a>
@@ -77,7 +113,6 @@ const cssVars = `
 </nav>
 
 <style>
-  /* 🔤 Importa la fuente local */
   @font-face {
     font-family: "NataSans";
     src: url("/fonts/NataSans-VariableFont_wght.ttf") format("truetype");
@@ -100,12 +135,13 @@ const cssVars = `
     display: block;
   }
 
+  /* NAV LINKS */
   .nav-links {
     display: flex;
+    gap: 2rem;
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 2rem;
   }
 
   .nav-links a,
@@ -117,8 +153,8 @@ const cssVars = `
     font-size: 1rem;
     font-weight: 500;
     padding: 0.5rem;
-    transition: color 0.2s ease;
     cursor: pointer;
+    transition: color 0.2s ease;
     font-family: inherit;
     display: inline-flex;
     align-items: center;
@@ -139,34 +175,24 @@ const cssVars = `
     border-radius: 8px;
   }
 
-  .dropdown-container {
-    position: relative;
-  }
-
-  .dropdown-trigger {
-    padding: 0.5rem;
-    margin: 0;
-    cursor: default;
-  }
-
-  .dropdown-trigger:hover,
-  .dropdown-container:focus-within .dropdown-trigger {
-    color: var(--nav-text-hover);
-  }
+  /* DROPDOWN */
+  .dropdown-container { position: relative; }
+  .dropdown-trigger { padding: 0.5rem; margin: 0; cursor: default; }
 
   .dropdown-menu {
     position: absolute;
     top: 100%;
     left: 0;
+    min-width: 220px;
+    margin: 0.5rem 0 0 0;
+    padding: 0.5rem 0;
+    list-style: none;
     background-color: var(--dropdown-bg);
     border: 1px solid #e9ecef;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    list-style: none;
-    padding: 0.5rem 0;
-    margin: 0.5rem 0 0 0;
-    min-width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     z-index: 10;
+
     visibility: hidden;
     opacity: 0;
     transform: translateY(10px);
@@ -194,17 +220,21 @@ const cssVars = `
     color: #000;
   }
 
+  /* ACTION BUTTONS */
   .action-links {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
   }
 
   .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
     padding: 0.6rem 1rem;
-    text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
+    text-decoration: none;
     border-radius: 8px;
     transition: all 0.2s ease;
   }
@@ -214,19 +244,22 @@ const cssVars = `
     color: var(--btn-light-text);
     border: 1px solid var(--btn-light-border);
   }
-
-  .btn-light:hover {
-    background-color: var(--btn-light-hover-bg);
-  }
+  .btn-light:hover { background-color: var(--btn-light-hover-bg); }
 
   .btn-outline {
     background-color: transparent;
     color: var(--btn-outline);
     border: 2px solid var(--btn-outline);
   }
-
   .btn-outline:hover {
     color: var(--btn-outline-hover);
     border-color: var(--btn-outline-hover);
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+    color: currentColor;
+    flex-shrink: 0;
   }
 </style>

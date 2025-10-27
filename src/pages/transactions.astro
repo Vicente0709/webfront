@@ -92,47 +92,47 @@ import Navbar from "../components/navbar.astro";
   .hero {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* contenido hacia la derecha (globo a la izq) */
+    justify-content: flex-end; 
     min-height: calc(100vh - 80px);
     padding: 6rem 8%;
   }
 
   .content {
     max-width: 720px;
-    text-align: center; /* como en el mock: título y párrafo centrados */
+    text-align: center; 
     position: relative;
     margin-right: 6%;
   }
 
-  /* “TX” sobre la barra verde del fondo, pegado a la derecha */
+  
   .band-text {
     position: absolute;
-    top: 5rem; /* baja o sube este valor si lo necesitas */
-    right: 7.2rem; /* pegado al extremo redondeado derecho */
+    top: 5rem; 
+    right: 7.2rem;
     font-weight: 400;
     font-size: 1.05rem;
     letter-spacing: 0.6px;
-    color: #0b132b; /* texto oscuro como el mock */
+    color: #0b132b; 
     background: transparent;
-    padding: 0.4rem 0.8rem; /* solo para legibilidad, no dibuja barra */
+    padding: 0.4rem 0.8rem;
   }
 
   .title {
-    color: #1b4b97; /* azul del mock */
+    color: #1b4b97; 
     font-weight: 500;
     line-height: 1.18;
     font-size: clamp(2rem, 4.6vw, 3.2rem);
-    margin: 7.75rem 0 1rem 0; /* separa del “TX” */
+    margin: 7.75rem 0 1rem 0; 
   }
 
   .description {
     color: #1b4b97;
     font-size: 1.05rem;
-    line-height: 1.5; /* 👈 más compacto */
-    max-width: 520px; /* 👈 menos ancho, más equilibrado */
-    text-align: center; /* 👈 centrado perfecto */
-    margin: 0 auto 2.5rem auto; /* 👈 centrado con aire debajo */
-    font-weight: 400; /* 👈 grosor de lectura más natural */
+    line-height: 1.5;
+    max-width: 520px; 
+    text-align: center; 
+    margin: 0 auto 2.5rem auto; 
+    font-weight: 400;
   }
 
   .cta {

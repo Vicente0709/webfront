@@ -1,5 +1,4 @@
 ---
-import productsPanel from "../components/productsPanel.astro";
 // Props configurables
 const {
   logoSrc = "/images/zelify_logo2.png",
@@ -11,7 +10,7 @@ const {
 // Variables CSS (colores + tipografía)
 const cssVars = `
    --nav-text: ${colors.text ?? "#ffffff"};
-   --nav-text-hover: ${colors.textHover ?? "#000000"};
+   --nav-text-hover: ${colors.textHover ?? "#ffffff"};
 +  --nav-bg: ${colors.background ?? "transparent"};
    --highlight-bg: ${colors.highlightBg ?? "#6AFF00"};
    --highlight-text: ${colors.highlightText ?? "#0d1117"};
@@ -21,9 +20,9 @@ const cssVars = `
    --btn-light-hover-bg: ${colors.btnLightHoverBg ?? "#d6dbe0"};
    --btn-light-text: ${colors.btnLightText ?? "#212529"};
 +  --btn-light-border: ${colors.btnLightBorder ?? "var(--btn-light-bg)"};
-   --dropdown-bg: ${colors.dropdownBg ?? "#ffffff"};
+   --dropdown-bg: ${colors.dropdownBg ?? "#CDD1DD"};
    --dropdown-link: ${colors.dropdownLink ?? "#212529"};
-   --dropdown-hover-bg: ${colors.dropdownHoverBg ?? "#f1f3f5"};
+   --dropdown-hover-bg: ${colors.dropdownHoverBg ?? "#CDD1DD"};
    --font-family: "NataSans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 `;
 ---
@@ -65,7 +64,9 @@ const cssVars = `
           <a href="/discountsCoupons" role="menuitem">Discounts & Coupons</a>
         </li>
       </ul> -->
-      <button id="products-trigger" class="dropdown-trigger" type="button">Products</button>
+      <button id="products-trigger" class="dropdown-trigger" type="button"
+        >Products</button
+      >
     </li>
     <li><a href="/">Resources</a></li>
     <li><a href="/">Developers</a></li>
@@ -247,7 +248,7 @@ const cssVars = `
 
   .dropdown-menu a:hover {
     background-color: var(--dropdown-hover-bg);
-    color: #000;
+    color: #cdd1dd;
   }
 
   /* ACTION BUTTONS */

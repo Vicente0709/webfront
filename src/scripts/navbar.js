@@ -4,7 +4,7 @@ window.addEventListener("DOMContentLoaded", () => {
   console.log("trigger:", !!trigger, "panel:", !!panel);
 
   if (!trigger || !panel) return;
-
+   console.log("Adding event listener to trigger");
   trigger.addEventListener("click", () => panel.classList.toggle("hidden"));
   document.addEventListener("click", (e) => {
     if (!panel.contains(e.target) && !trigger.contains(e.target)) {

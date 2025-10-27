@@ -26,8 +26,3 @@
     @apply bg-gray-200 text-gray-900 hover:bg-gray-300;
   }
 }
-.products-panel.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transform: translate(-50%, -20px);
-}
